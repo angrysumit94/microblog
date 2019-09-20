@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      FLASK_ENV: development  
+  jenkins:
+    image: jenkinsci/blueocean
+    user: root
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_data:/var/jenkins_home
+      - ./home:/home
+      - /var/run/docker.sock:/var/run/docker.sock  
