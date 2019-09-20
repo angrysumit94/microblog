@@ -1,4 +1,6 @@
 pipeline {
+"""
+<<<<<<< HEAD
   agent {
     docker {
       image 'python:3.6-alpine'
@@ -17,6 +19,16 @@ pipeline {
     stage('Test') {
       steps {
         sh 'pytest test_sample.py'
+      }
+    }
+  }
+}
+"""
+  agent any
+  stages {
+    stage('Building assets') {
+      steps {
+        echo 'dummy prints'
       }
     }
   }
